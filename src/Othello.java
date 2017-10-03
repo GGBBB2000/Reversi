@@ -5,8 +5,7 @@ public class Othello {
 	static String koma[][] = new String [30][30];
 	static int cn[][]=new int [30][30];
 	static int max = 0;
-	static int maxi = 0;
-	static int maxj = 0;
+
 	static void diff(){
 		for (int j = 11;j<19;j++){
 			for (int i = 11;i<19;i++){
@@ -19,6 +18,7 @@ public class Othello {
 			}
 		}
 	}
+
 	static void write(){
 		//8*8ます
 		//ただしx,yともに0は欄外
@@ -30,119 +30,125 @@ public class Othello {
 					System.out.print(" ");
 				}
 			}
-		System.out.println("");
+			System.out.println("");
 		}
 	}
-	 static void search() {
-	//黒がおけるところ探索
+
+	static void search() {
+		//黒がおけるところ探索
 		for(int j = 11;j<19;j++){
 			for (int i = 11;i<19;i++){
-				//上
-				if (rock[i][j]==1&&rock[i][j-1]==2){//黒かつ真上白
-					for (int k=2;k>=2;k++){
-						if (rock[i][j-k]==1){
-							k=0;
-						}
-						if (rock[i][j-k]<=0){//空きマス
-							rock[i][j-k]=-1;
-							k=0;//直上のfor文からぬける
-						}
-					}
-				}
-				//右
-				if (rock[i][j]==1&&rock[i+1][j]==2){//黒かつ右白
-					for (int k=2;k>=2;k++){
-						if (rock[i+k][j]==1){
-							k=0;
-						}
-						if (rock[i+k][j]<=0){//空きマス
-							rock[i+k][j]=-1;
-							k=0;//直上のfor文からぬける
+				if(rock[i][j]==1){
+					//上
+					if (rock[i][j-1]==2){//黒かつ真上白
+						for (int k=2;k>=2;k++){
+							if (rock[i][j-k]==1){
+								k=0;
+							}
+							if (rock[i][j-k]<=0){//空きマス
+								rock[i][j-k]=-1;
+								k=0;//直上のfor文からぬける
+							}
 						}
 					}
-				}
-				//左
-				if (rock[i][j]==1&&rock[i-1][j]==2){//黒かつ左白
-					for (int k=2;k>=2;k++){
-						if (rock[i-k][j]==1){
-							k=0;
-						}
-						if (rock[i-k][j]<=0){//空きマス
-							rock[i-k][j]=-1;
-							k=0;//直上のfor文からぬける
-						}
-					}
-				}
-				//下
-				if (rock[i][j]==1&&rock[i][j+1]==2){//黒かつ左白
-					for (int k=2;k>=2;k++){
-						if (rock[i][j+k]==1){
-							k=0;
-						}
-						if (rock[i][j+k]<=0){//空きマス
-							rock[i][j+k]=-1;
-							k=0;//直上のfor文からぬける
+					//右
+					if (rock[i+1][j]==2){//黒かつ右白
+						for (int k=2;k>=2;k++){
+							if (rock[i+k][j]==1){
+								k=0;
+							}
+							if (rock[i+k][j]<=0){//空きマス
+								rock[i+k][j]=-1;
+								k=0;//直上のfor文からぬける
+							}
 						}
 					}
-				}
-				//右下
-				if (rock[i][j]==1&&rock[i+1][j+1]==2){//黒かつ左白
-					for (int k=2;k>=2;k++){
-						if (rock[i+k][j+k]==1){
-							k=0;
-						}
-						if (rock[i+k][j+k]<=0){//空きマス
-							rock[i+k][j+k]=-1;
-							k=0;//直上のfor文からぬける
-						}
-					}
-				}
-				//右上
-				if (rock[i][j]==1&&rock[i+1][j-1]==2){//黒かつ左白
-					for (int k=2;k>=2;k++){
-						if (rock[i+k][j-k]==1){
-							k=0;
-						}
-						if (rock[i+k][j-k]<=0){//空きマス
-							rock[i+k][j-k]=-1;
-							k=0;//直上のfor文からぬける
+					//左
+					if (rock[i-1][j]==2){//黒かつ左白
+						for (int k=2;k>=2;k++){
+							if (rock[i-k][j]==1){
+								k=0;
+							}
+							if (rock[i-k][j]<=0){//空きマス
+								rock[i-k][j]=-1;
+								k=0;//直上のfor文からぬける
+							}
 						}
 					}
-				}
-				//左下
-				if (rock[i][j]==1&&rock[i-1][j+1]==2){//黒かつ左白
-					for (int k=2;k>=2;k++){
-						if (rock[i-k][j+k]==1){
-							k=0;
-						}
-						if (rock[i-k][j+k]<=0){//空きマス
-							rock[i-k][j+k]=-1;
-							k=0;//直上のfor文からぬける
+					//下
+					if (rock[i][j+1]==2){//黒かつ左白
+						for (int k=2;k>=2;k++){
+							if (rock[i][j+k]==1){
+								k=0;
+							}
+							if (rock[i][j+k]<=0){//空きマス
+								rock[i][j+k]=-1;
+								k=0;//直上のfor文からぬける
+							}
 						}
 					}
-				}
-				//左上
-				if (rock[i][j]==1&&rock[i-1][j-1]==2){//黒かつ左白
-					for (int k=2;k>=2;k++){
-						if (rock[i-k][j-k]==1){
-							k=0;
+					//右下
+					if (rock[i+1][j+1]==2){//黒かつ左白
+						for (int k=2;k>=2;k++){
+							if (rock[i+k][j+k]==1){
+								k=0;
+							}
+							if (rock[i+k][j+k]<=0){//空きマス
+								rock[i+k][j+k]=-1;
+								k=0;//直上のfor文からぬける
+							}
 						}
-						if (rock[i-k][j-k]<=0){//空きマス
-							rock[i-k][j-k]=-1;
-							k=0;//直上のfor文からぬける
+					}
+					//右上
+					if (rock[i+1][j-1]==2){//黒かつ左白
+						for (int k=2;k>=2;k++){
+							if (rock[i+k][j-k]==1){
+								k=0;
+							}
+							if (rock[i+k][j-k]<=0){//空きマス
+								rock[i+k][j-k]=-1;
+								k=0;//直上のfor文からぬける
+							}
+						}
+					}
+					//左下
+					if (rock[i-1][j+1]==2){//黒かつ左白
+						for (int k=2;k>=2;k++){
+							if (rock[i-k][j+k]==1){
+								k=0;
+							}
+							if (rock[i-k][j+k]<=0){//空きマス
+								rock[i-k][j+k]=-1;
+								k=0;//直上のfor文からぬける
+							}
+						}
+					}
+					//左上
+					if (rock[i-1][j-1]==2){//黒かつ左白
+						for (int k=2;k>=2;k++){
+							if (rock[i-k][j-k]==1){
+								k=0;
+							}
+							if (rock[i-k][j-k]<=0){//空きマス
+								rock[i-k][j-k]=-1;
+								k=0;//直上のfor文からぬける
+							}
 						}
 					}
 				}
 			}
 		}
 	}
-	static void count(){
 
+	static void count(){
+		int maxi = 0;
+		int maxj = 0;
 		for(int j = 11;j<19;j++){
 			for (int i = 11;i<19;i++){//こっからくっそ無駄な処理してて恥ずかしくないの。。。？
 				//上
 				int h = 0;
 				if (rock[i][j]==-1){
+					//上
 					for (int k=1;k>=0;k++){//このfor文は全方向でいっこでいいよね
 						if (rock[i][j-k]<=0||i-k==0||j-k==0){//白ではないまたは配列内が0にならないための処理
 							h = 0;
@@ -157,9 +163,7 @@ public class Othello {
 							break;
 						}
 					}
-				}
-				//右
-				if (rock[i][j]==-1){
+					//右
 					for (int k=1;k>=0;k++){//このfor文は全方向でいっこでいいよね
 						if (rock[i+k][j]<=0||i-k==0||j-k==0){//白ではないまたは配列内が0にならないための処理
 							h = 0;
@@ -174,9 +178,7 @@ public class Othello {
 							break;
 						}
 					}
-				}
-				//下
-				if (rock[i][j]==-1){
+					//下
 					for (int k=1;k>=0;k++){//このfor文は全方向でいっこでいいよね
 						if (rock[i][j+k]<=0||i-k==0||j-k==0){//白ではないまたは配列内が0にならないための処理
 							h = 0;
@@ -191,9 +193,7 @@ public class Othello {
 							break;
 						}
 					}
-				}
-				//左
-				if (rock[i][j]==-1){
+					//左
 					for (int k=1;k>=0;k++){//このfor文は全方向でいっこでいいよね
 						if (rock[i-k][j]<=0||i-k==0||j-k==0){//白ではないまたは配列内が0にならないための処理
 							h = 0;
@@ -208,9 +208,7 @@ public class Othello {
 							break;
 						}
 					}
-				}
-				//右上
-				if (rock[i][j]==-1){
+					//右上
 					for (int k=1;k>=0;k++){//このfor文は全方向でいっこでいいよね
 						if (rock[i+k][j-k]<=0||i-k==0||j-k==0){//白ではないまたは配列内が0にならないための処理
 							h = 0;
@@ -225,9 +223,7 @@ public class Othello {
 							break;
 						}
 					}
-				}
-				//右下
-				if (rock[i][j]==-1){
+					//右下
 					for (int k=1;k>=0;k++){//このfor文は全方向でいっこでいいよね
 						if (rock[i+k][j+k]<=0||i-k==0||j-k==0){//白ではないまたは配列内が0にならないための処理
 							h = 0;
@@ -242,9 +238,7 @@ public class Othello {
 							break;
 						}
 					}
-				}
-				//左下
-				if (rock[i][j]==-1){
+					//左下
 					for (int k=1;k>=0;k++){//このfor文は全方向でいっこでいいよね
 						if (rock[i-k][j+k]<=0||i-k==0||j-k==0){//白ではないまたは配列内が0にならないための処理
 							h = 0;
@@ -259,9 +253,7 @@ public class Othello {
 							break;
 						}
 					}
-				}
-				//左上
-				if (rock[i][j]==-1){
+					//左上
 					for (int k=1;k>=0;k++){//このfor文は全方向でいっこでいいよね
 						if (rock[i-k][j-k]<=0||i-k==0||j-k==0){//白ではないまたは配列内が0にならないための処理
 							h = 0;
@@ -279,7 +271,6 @@ public class Othello {
 				}
 
 				if (rock[i][j]==-1){//その座標においたとき裏返る個数＝count
-
 					System.out.println("x,y= "+(i-10)+","+(j-10)+" count= "+(cn[i][j]));
 					if (cn[i][j]>=max){
 						maxi=i;maxj=j;max=cn[i][j];
@@ -290,121 +281,121 @@ public class Othello {
 
 
 		rock[maxi][maxj] = 1;
-		int i = maxi;
-		int j = maxj;
+		final int i = maxi;
+		final int j = maxj;
 		int u=0;
 		//右
-				for (int k=0;k>=0;k++){
-					if (rock[i+k][j]<=0||i-k==0||j-k==0){//白ではないまたは配列内が0にならないための処理
-						break;//白がないので直上のfor文からぬける
-					}
-					if (rock[i+k][j]==2){
-						u=1;
-					}
-					if (u==1&&rock[i+k][j]==1){
-						for(int s=0;s<k;s++){
-							rock[i+s][j]=1;
-						}
-					}
+		for (int k=0;k>=0;k++){
+			if (rock[i+k][j]<=0||i-k==0||j-k==0){//白ではないまたは配列内が0にならないための処理
+				break;//白がないので直上のfor文からぬける
+			}
+			if (rock[i+k][j]==2){
+				u=1;
+			}
+			if (u==1&&rock[i+k][j]==1){
+				for(int s=0;s<k;s++){
+					rock[i+s][j]=1;
 				}
-				//左
-				for (int k=0;k>=0;k++){
-					if (rock[i-k][j]<=0||i-k==0||j-k==0){//白ではないまたは配列内が0にならないための処理
-						break;//白がないので直上のfor文からぬける
-					}
-					if (rock[i-k][j]==2){
-						u=1;
-					}
-					if (u==1&&rock[i-k][j]==1){
-						for(int s=0;s<k;s++){
-							rock[i-s][j]=1;
-						}
-					}
+			}
+		}
+		//左
+		for (int k=0;k>=0;k++){
+			if (rock[i-k][j]<=0||i-k==0||j-k==0){//白ではないまたは配列内が0にならないための処理
+				break;//白がないので直上のfor文からぬける
+			}
+			if (rock[i-k][j]==2){
+				u=1;
+			}
+			if (u==1&&rock[i-k][j]==1){
+				for(int s=0;s<k;s++){
+					rock[i-s][j]=1;
 				}
-				//上
-				for (int k=0;k>=0;k++){
-					if (rock[i][j-k]<=0||i-k==0||j-k==0){//白ではないまたは配列内が0にならないための処理
-						break;//白がないので直上のfor文からぬける
-					}
-					if (rock[i][j-k]==2){
-						u=1;
-					}
-					if (u==1&&rock[i][j-k]==1){
-						for(int s=0;s<k;s++){
-							rock[i][j-s]=1;
-						}
-					}
+			}
+		}
+		//上
+		for (int k=0;k>=0;k++){
+			if (rock[i][j-k]<=0||i-k==0||j-k==0){//白ではないまたは配列内が0にならないための処理
+				break;//白がないので直上のfor文からぬける
+			}
+			if (rock[i][j-k]==2){
+				u=1;
+			}
+			if (u==1&&rock[i][j-k]==1){
+				for(int s=0;s<k;s++){
+					rock[i][j-s]=1;
 				}
-				//下
-				for (int k=0;k>=0;k++){
-					if (rock[i][j+k]<=0||i-k==0||j-k==0){//白ではないまたは配列内が0にならないための処理
-						break;//白がないので直上のfor文からぬける
-					}
-					if (rock[i][j+k]==2){
-						u=1;
-					}
-					if (u==1&&rock[i][j+k]==1){
-						for(int s=0;s<k;s++){
-							rock[i][j+s]=1;
-						}
-					}
+			}
+		}
+		//下
+		for (int k=0;k>=0;k++){
+			if (rock[i][j+k]<=0||i-k==0||j-k==0){//白ではないまたは配列内が0にならないための処理
+				break;//白がないので直上のfor文からぬける
+			}
+			if (rock[i][j+k]==2){
+				u=1;
+			}
+			if (u==1&&rock[i][j+k]==1){
+				for(int s=0;s<k;s++){
+					rock[i][j+s]=1;
 				}
-				//右上
-				for (int k=0;k>=0;k++){
-					if (rock[i+k][j-k]<=0||i-k==0||j-k==0){//白ではないまたは配列内が0にならないための処理
-						break;//白がないので直上のfor文からぬける
-					}
-					if (rock[i+k][j-k]==2){
-						u=1;
-					}
-					if (u==1&&rock[i+k][j-k]==1){
-						for(int s=0;s<k;s++){
-							rock[i+s][j-s]=1;
-						}
-					}
+			}
+		}
+		//右上
+		for (int k=0;k>=0;k++){
+			if (rock[i+k][j-k]<=0||i-k==0||j-k==0){//白ではないまたは配列内が0にならないための処理
+				break;//白がないので直上のfor文からぬける
+			}
+			if (rock[i+k][j-k]==2){
+				u=1;
+			}
+			if (u==1&&rock[i+k][j-k]==1){
+				for(int s=0;s<k;s++){
+					rock[i+s][j-s]=1;
 				}
-				//右下
-				for (int k=0;k>=0;k++){
-					if (rock[i+k][j+k]<=0||i-k==0||j-k==0){//白ではないまたは配列内が0にならないための処理
-						break;//白がないので直上のfor文からぬける
-					}
-					if (rock[i+k][j+k]==2){
-						u=1;
-					}
-					if (u==1&&rock[i+k][j+k]==1){
-						for(int s=0;s<k;s++){
-							rock[i+s][j+s]=1;
-						}
-					}
+			}
+		}
+		//右下
+		for (int k=0;k>=0;k++){
+			if (rock[i+k][j+k]<=0||i-k==0||j-k==0){//白ではないまたは配列内が0にならないための処理
+				break;//白がないので直上のfor文からぬける
+			}
+			if (rock[i+k][j+k]==2){
+				u=1;
+			}
+			if (u==1&&rock[i+k][j+k]==1){
+				for(int s=0;s<k;s++){
+					rock[i+s][j+s]=1;
 				}
-				//左下
-				for (int k=0;k>=0;k++){
-					if (rock[i-k][j+k]<=0||i-k==0||j-k==0){//白ではないまたは配列内が0にならないための処理
-						break;//白がないので直上のfor文からぬける
-					}
-					if (rock[i-k][j+k]==2){
-						u=1;
-					}
-					if (u==1&&rock[i-k][j+k]==1){
-						for(int s=0;s<k;s++){
-							rock[i-s][j+s]=1;
-						}
-					}
+			}
+		}
+		//左下
+		for (int k=0;k>=0;k++){
+			if (rock[i-k][j+k]<=0||i-k==0||j-k==0){//白ではないまたは配列内が0にならないための処理
+				break;//白がないので直上のfor文からぬける
+			}
+			if (rock[i-k][j+k]==2){
+				u=1;
+			}
+			if (u==1&&rock[i-k][j+k]==1){
+				for(int s=0;s<k;s++){
+					rock[i-s][j+s]=1;
 				}
-				//左上
-				for (int k=0;k>=0;k++){
-					if (rock[i-k][j-k]<=0||i-k==0||j-k==0){//白ではないまたは配列内が0にならないための処理
-						break;//白がないので直上のfor文からぬける
-					}
-					if (rock[i-k][j-k]==2){
-						u=1;
-					}
-					if (u==1&&rock[i+k][j-k]==1){
-						for(int s=0;s<k;s++){
-							rock[i-s][j-s]=1;
-						}
-					}
+			}
+		}
+		//左上
+		for (int k=0;k>=0;k++){
+			if (rock[i-k][j-k]<=0||i-k==0||j-k==0){//白ではないまたは配列内が0にならないための処理
+				break;//白がないので直上のfor文からぬける
+			}
+			if (rock[i-k][j-k]==2){
+				u=1;
+			}
+			if (u==1&&rock[i+k][j-k]==1){
+				for(int s=0;s<k;s++){
+					rock[i-s][j-s]=1;
 				}
+			}
+		}
 		for(int s=11;s<19;s++){
 			for(int t=11;t<19;t++){
 				if (rock[t][s]==-1){
@@ -413,6 +404,7 @@ public class Othello {
 			}
 		}
 	}
+
 	static void draw(){
 		//String[][] d = new String[30][30];
 		System.out.println("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
@@ -430,7 +422,7 @@ public class Othello {
 						break;
 					case 2 :
 						System.out.print("○");
-						 break;
+						break;
 					case -1 :
 						System.out.print("▲");
 						break;
@@ -443,14 +435,11 @@ public class Othello {
 				}
 				System.out.print("　｜　");
 			}
-		System.out.println("");
-		System.out.println("_______________________________________________________________");
+			System.out.println("");
+			System.out.println("_______________________________________________________________");
 		}
-
-
-
-
 	}
+
 	static boolean human()throws IOException{
 		System.out.println("あなたは○です");
 		System.out.println("打ちたいx座標を入力してください(パスの際は(15,15))");
