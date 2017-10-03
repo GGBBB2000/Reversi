@@ -141,13 +141,20 @@ public class Othello {
 		for(int j = 11;j<19;j++){
 			for (int i = 11;i<19;i++){//こっからくっそ無駄な処理してて恥ずかしくないの。。。？
 				//上
+				int h = 0;
 				if (rock[i][j]==-1){
 					for (int k=1;k>=0;k++){//このfor文は全方向でいっこでいいよね
 						if (rock[i][j-k]<=0||i-k==0||j-k==0){//白ではないまたは配列内が0にならないための処理
+							h = 0;
 							break;//直上のfor文からぬける
+						}
+						if (rock[i][j-k]==2){
+							h = 1;
 						}
 						if (rock[i][j-k]==1){
 							cn[i][j]+=k-1;//ひっくりかえる数を加算
+							h = 0;
+							break;
 						}
 					}
 				}
@@ -155,10 +162,16 @@ public class Othello {
 				if (rock[i][j]==-1){
 					for (int k=1;k>=0;k++){//このfor文は全方向でいっこでいいよね
 						if (rock[i+k][j]<=0||i-k==0||j-k==0){//白ではないまたは配列内が0にならないための処理
+							h = 0;
 							break;//直上のfor文からぬける
+						}
+						if (rock [i+k][j]==2){
+							h = 1;
 						}
 						if (rock[i+k][j]==1){
 							cn[i][j]+=k-1;//ひっくりかえる数を加算
+							h = 0;
+							break;
 						}
 					}
 				}
@@ -166,10 +179,16 @@ public class Othello {
 				if (rock[i][j]==-1){
 					for (int k=1;k>=0;k++){//このfor文は全方向でいっこでいいよね
 						if (rock[i][j+k]<=0||i-k==0||j-k==0){//白ではないまたは配列内が0にならないための処理
+							h = 0;
 							break;//直上のfor文からぬける
+						}
+						if (rock [i][j+k]==2){
+							h = 1;
 						}
 						if (rock[i][j+k]==1){
 							cn[i][j]+=k-1;//ひっくりかえる数を加算
+							h = 0;
+							break;
 						}
 					}
 				}
@@ -177,10 +196,16 @@ public class Othello {
 				if (rock[i][j]==-1){
 					for (int k=1;k>=0;k++){//このfor文は全方向でいっこでいいよね
 						if (rock[i-k][j]<=0||i-k==0||j-k==0){//白ではないまたは配列内が0にならないための処理
+							h = 0;
 							break;//直上のfor文からぬける
+						}
+						if (rock [i-k][j]==2){
+							h = 1;
 						}
 						if (rock[i-k][j]==1){
 							cn[i][j]+=k-1;//ひっくりかえる数を加算
+							h = 0;
+							break;
 						}
 					}
 				}
@@ -188,10 +213,16 @@ public class Othello {
 				if (rock[i][j]==-1){
 					for (int k=1;k>=0;k++){//このfor文は全方向でいっこでいいよね
 						if (rock[i+k][j-k]<=0||i-k==0||j-k==0){//白ではないまたは配列内が0にならないための処理
+							h = 0;
 							break;//直上のfor文からぬける
+						}
+						if (rock [i+k][j-k]==2){
+							h = 1;
 						}
 						if (rock[i+k][j-k]==1){
 							cn[i][j]+=k-1;//ひっくりかえる数を加算
+							h = 0;
+							break;
 						}
 					}
 				}
@@ -199,10 +230,16 @@ public class Othello {
 				if (rock[i][j]==-1){
 					for (int k=1;k>=0;k++){//このfor文は全方向でいっこでいいよね
 						if (rock[i+k][j+k]<=0||i-k==0||j-k==0){//白ではないまたは配列内が0にならないための処理
+							h = 0;
 							break;//直上のfor文からぬける
+						}
+						if (rock [i+k][j+k]==2){
+							h = 1;
 						}
 						if (rock[i+k][j+k]==1){
 							cn[i][j]+=k-1;//ひっくりかえる数を加算
+							h = 0;
+							break;
 						}
 					}
 				}
@@ -210,10 +247,16 @@ public class Othello {
 				if (rock[i][j]==-1){
 					for (int k=1;k>=0;k++){//このfor文は全方向でいっこでいいよね
 						if (rock[i-k][j+k]<=0||i-k==0||j-k==0){//白ではないまたは配列内が0にならないための処理
+							h = 0;
 							break;//直上のfor文からぬける
+						}
+						if (rock[i-k][j+k]==2){
+							h = 1;
 						}
 						if (rock[i-k][j+k]==1){
 							cn[i][j]+=k-1;//ひっくりかえる数を加算
+							h = 0;
+							break;
 						}
 					}
 				}
@@ -221,17 +264,23 @@ public class Othello {
 				if (rock[i][j]==-1){
 					for (int k=1;k>=0;k++){//このfor文は全方向でいっこでいいよね
 						if (rock[i-k][j-k]<=0||i-k==0||j-k==0){//白ではないまたは配列内が0にならないための処理
+							h = 0;
 							break;//直上のfor文からぬける
+						}
+						if (rock [i-k][j-k]==2){
+							h = 1;
 						}
 						if (rock[i-k][j-k]==1){
 							cn[i][j]+=k-1;//ひっくりかえる数を加算
+							h = 0;
+							break;
 						}
 					}
 				}
 
 				if (rock[i][j]==-1){//その座標においたとき裏返る個数＝count
 
-					//System.out.println("x,y= "+(i-10)+","+(j-10)+" count= "+(cn[i][j]));
+					System.out.println("x,y= "+(i-10)+","+(j-10)+" count= "+(cn[i][j]));
 					if (cn[i][j]>=max){
 						maxi=i;maxj=j;max=cn[i][j];
 					}
@@ -390,6 +439,7 @@ public class Othello {
 						break;
 					default :
 						System.out.print("??");
+						System.out.println("Error:不明な値を検出");
 				}
 				System.out.print("　｜　");
 			}
@@ -401,19 +451,15 @@ public class Othello {
 
 
 	}
-	static int human()throws IOException{
+	static boolean human()throws IOException{
 		System.out.println("あなたは○です");
-		System.out.println("打ちたいx座標を入力してください");
+		System.out.println("打ちたいx座標を入力してください(パスの際は(15,15))");
 		Scanner scanner = new Scanner (System.in);
 		int i = (scanner.nextInt()+10);
-		System.out.println("打ちたいy座標を入力してください");
+		System.out.println("打ちたいy座標を入力してください(パスの際は(15,15))");
 		int j = (scanner.nextInt()+10);
 		rock[i][j]=2;
 		int u=0;
-		int en=0;
-		if (i==10){
-			en=-1;
-		}
 		//右
 		for (int k=0;k>=0;k++){
 			if (rock[i+k][j]<=0||i-k==0||j-k==0){//白ではないまたは配列内が0にならないための処理
@@ -534,7 +580,7 @@ public class Othello {
 			}
 		}
 
-		return en;
+		return (i == 10);
 	}
 
 }

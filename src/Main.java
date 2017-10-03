@@ -2,7 +2,14 @@ import java.io.IOException;
 public class Main {
 
 	public static void main(String[] args)throws IOException {
-		Othello othello = new Othello();
+		/*
+		既存のバグ一覧
+		：その局面で一番多く取れる場所に置くことができていない
+		：AIが置かない
+
+
+		*/
+		//Othello othello = new Othello();
 		Othello.diff();
 		for(;;){
 			//Othello.write();
@@ -17,12 +24,11 @@ public class Main {
 			//Othello.write();
 			System.out.println("判断後");
 			Othello.draw();
-			if (Othello.human()==-1){
+			if (!Othello.human()){
 				System.out.println("end");
 				break;
 			}
 			System.out.println("人間がおいた場所");
-			Othello.draw();
 		}
 	}
 }
