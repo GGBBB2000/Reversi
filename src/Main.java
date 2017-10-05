@@ -6,6 +6,9 @@ public class Main {
 			既存のバグ一覧
 			：
 			：
+			不完全な仕様
+			：人間は打てないところに打てる
+			：
 			*/
 			//Othello othello = new Othello();
 			Othello.diff();

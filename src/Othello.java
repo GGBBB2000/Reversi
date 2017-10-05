@@ -10,7 +10,7 @@ public class Othello {
 	static void diff(){
 		for (int j = 11;j<19;j++){
 			for (int i = 11;i<19;i++){
-				rock[i][j] = 1;
+				rock[i][j] = 0;
 				rock[10+4][10+4] = 1;//１：黒
 				rock[10+5][10+4] = 2;//２：白
 				rock[10+4][10+5] = 2;//-1：黒がおける
@@ -523,7 +523,7 @@ public class Othello {
 			//System.out.print("  1　｜　2　｜　3　｜　4　｜　5　｜　6　｜　7　｜　8　｜\n");//linux
 			System.out.print("  １　｜　２　｜　３　｜　４　｜　５　｜　６　｜　７　｜　８　｜\n");//Windows
 			for(int p=11;p<19;p++){
-				System.out.print(j-10+" |");
+				System.out.print(j+" |");
 				for(int q=11;q<19;q++){
 					switch (rock[q][p]){
 						case 0:
