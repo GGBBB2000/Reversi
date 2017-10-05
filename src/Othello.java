@@ -157,9 +157,12 @@ public class Othello {
 						if (rock[i][j-k]==2){
 							h = 1;
 						}
-						if (rock[i][j-k]==1){
+						if (rock[i][j-k]==1&&h==1){
 							cn[i][j]+=k-1;//ひっくりかえる数を加算
 							h = 0;
+							break;
+						}
+						if (rock[i][j-k]==1&&h==0){
 							break;
 						}
 					}
@@ -172,9 +175,12 @@ public class Othello {
 						if (rock [i+k][j]==2){
 							h = 1;
 						}
-						if (rock[i+k][j]==1){
+						if (rock[i+k][j]==1&&h==1){
 							cn[i][j]+=k-1;//ひっくりかえる数を加算
 							h = 0;
+							break;
+						}
+						if (rock[i+k][j]==1&&h==0){
 							break;
 						}
 					}
@@ -187,9 +193,12 @@ public class Othello {
 						if (rock [i][j+k]==2){
 							h = 1;
 						}
-						if (rock[i][j+k]==1){
+						if (rock[i][j+k]==1&&h==1){
 							cn[i][j]+=k-1;//ひっくりかえる数を加算
 							h = 0;
+							break;
+						}
+						if (rock[i][j+k]==1&&h==0){
 							break;
 						}
 					}
@@ -202,11 +211,16 @@ public class Othello {
 						if (rock [i-k][j]==2){
 							h = 1;
 						}
-						if (rock[i-k][j]==1){
+						if (rock[i-k][j]==1&&h==1){
 							cn[i][j]+=k-1;//ひっくりかえる数を加算
 							h = 0;
 							break;
 						}
+						if (rock[i-k][j]==1&&h==0){
+							break;
+						}
+
+
 					}
 					//右上
 					for (int k=1;k>=0;k++){//このfor文は全方向でいっこでいいよね
@@ -217,9 +231,12 @@ public class Othello {
 						if (rock [i+k][j-k]==2){
 							h = 1;
 						}
-						if (rock[i+k][j-k]==1){
+						if (rock[i+k][j-k]==1&&h==1){
 							cn[i][j]+=k-1;//ひっくりかえる数を加算
 							h = 0;
+							break;
+						}
+						if (rock[i+k][j-k]==1&&h==0){
 							break;
 						}
 					}
@@ -232,9 +249,12 @@ public class Othello {
 						if (rock [i+k][j+k]==2){
 							h = 1;
 						}
-						if (rock[i+k][j+k]==1){
+						if (rock[i+k][j+k]==1&&h==1){
 							cn[i][j]+=k-1;//ひっくりかえる数を加算
 							h = 0;
+							break;
+						}
+						if (rock[i+k][j+k]==1&&h==0){
 							break;
 						}
 					}
@@ -247,9 +267,12 @@ public class Othello {
 						if (rock[i-k][j+k]==2){
 							h = 1;
 						}
-						if (rock[i-k][j+k]==1){
+						if (rock[i-k][j+k]==1&&h==1){
 							cn[i][j]+=k-1;//ひっくりかえる数を加算
 							h = 0;
+							break;
+						}
+						if (rock[i-k][j+k]==1&&h==0){
 							break;
 						}
 					}
@@ -262,9 +285,12 @@ public class Othello {
 						if (rock [i-k][j-k]==2){
 							h = 1;
 						}
-						if (rock[i-k][j-k]==1){
+						if (rock[i-k][j-k]==1&&h==1){
 							cn[i][j]+=k-1;//ひっくりかえる数を加算
 							h = 0;
+							break;
+						}
+						if (rock[i-k][j-k]==1&&h==0){
 							break;
 						}
 					}
@@ -274,12 +300,13 @@ public class Othello {
 					System.out.println("x,y= "+(i-10)+","+(j-10)+" count= "+(cn[i][j]));
 					if (cn[i][j]>=max){
 						maxi=i;maxj=j;max=cn[i][j];
+						cn[i][j]=0;
 					}
 				}
 			}
 		}
-
-
+		max=0;
+		System.out.println("change(x,y)="+(maxi-10)+","+(maxj-10));
 		rock[maxi][maxj] = 1;
 		final int i = maxi;
 		final int j = maxj;
@@ -445,6 +472,10 @@ public class Othello {
 		System.out.println("打ちたいx座標を入力してください(パスの際は(15,15))");
 		Scanner scanner = new Scanner (System.in);
 		int i = (scanner.nextInt()+10);
+		boolean en = true;
+		if (i==10){
+			en = false;
+		}
 		System.out.println("打ちたいy座標を入力してください(パスの際は(15,15))");
 		int j = (scanner.nextInt()+10);
 		rock[i][j]=2;
@@ -569,7 +600,7 @@ public class Othello {
 			}
 		}
 
-		return (i == 10);
+		return (en);
 	}
 
 }
