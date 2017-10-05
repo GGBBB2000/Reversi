@@ -6,15 +6,16 @@ public class Othello {
 	static int cn[][]=new int [30][30];
 	static int max = 0;
 	static int debag = 0;
+
 	static void diff(){
 		for (int j = 11;j<19;j++){
 			for (int i = 11;i<19;i++){
-				rock[i][j] = 0;
+				rock[i][j] = 1;
 				rock[10+4][10+4] = 1;//１：黒
 				rock[10+5][10+4] = 2;//２：白
 				rock[10+4][10+5] = 2;//-1：黒がおける
 				rock[10+5][10+5] = 1;//-2：白がおける
-				rock[10+5][10+3] = 2;
+				rock[10+5][10+3] = 0;
 			}
 		}
 	}
@@ -47,6 +48,7 @@ public class Othello {
 							}
 							if (rock[i][j-k]<=0){//空きマス
 								rock[i][j-k]=-1;
+
 								k=0;//直上のfor文からぬける
 							}
 						}
@@ -60,6 +62,7 @@ public class Othello {
 							if (rock[i+k][j]<=0){//空きマス
 								rock[i+k][j]=-1;
 								k=0;//直上のfor文からぬける
+
 							}
 						}
 					}
@@ -72,6 +75,7 @@ public class Othello {
 							if (rock[i-k][j]<=0){//空きマス
 								rock[i-k][j]=-1;
 								k=0;//直上のfor文からぬける
+
 							}
 						}
 					}
@@ -84,6 +88,7 @@ public class Othello {
 							if (rock[i][j+k]<=0){//空きマス
 								rock[i][j+k]=-1;
 								k=0;//直上のfor文からぬける
+
 							}
 						}
 					}
@@ -96,6 +101,7 @@ public class Othello {
 							if (rock[i+k][j+k]<=0){//空きマス
 								rock[i+k][j+k]=-1;
 								k=0;//直上のfor文からぬける
+
 							}
 						}
 					}
@@ -108,6 +114,7 @@ public class Othello {
 							if (rock[i+k][j-k]<=0){//空きマス
 								rock[i+k][j-k]=-1;
 								k=0;//直上のfor文からぬける
+
 							}
 						}
 					}
@@ -120,6 +127,7 @@ public class Othello {
 							if (rock[i-k][j+k]<=0){//空きマス
 								rock[i-k][j+k]=-1;
 								k=0;//直上のfor文からぬける
+
 							}
 						}
 					}
@@ -132,6 +140,7 @@ public class Othello {
 							if (rock[i-k][j-k]<=0){//空きマス
 								rock[i-k][j-k]=-1;
 								k=0;//直上のfor文からぬける
+
 							}
 						}
 					}
@@ -139,10 +148,21 @@ public class Othello {
 			}
 		}
 	}
-
 	static void count(){
+		int judge = 0;
 		int maxi = 0;
 		int maxj = 0;
+		for (int t = 11;t<19;t++){
+			for (int s = 11;s<19;s++){
+				if(rock[s][t] <= 0){
+					judge = 1;
+				}
+			}
+		}
+		if (judge==0){
+			System.out.println("コンピュータはパスしました");
+		}
+		judge=0;
 		for(int j = 11;j<19;j++){
 			for (int i = 11;i<19;i++){//こっからくっそ無駄な処理してて恥ずかしくないの。。。？
 				//上
