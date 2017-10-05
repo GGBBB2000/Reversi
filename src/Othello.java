@@ -443,7 +443,7 @@ public class Othello {
 			if (rock[i-k][j-k]==2){
 				u=1;
 			}
-			if (u==1&&rock[i+k][j-k]==1){
+			if (u==1&&rock[i-k][j-k]==1){
 				for(int s=0;s<k;s++){
 					rock[i-s][j-s]=1;
 				}
