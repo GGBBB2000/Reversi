@@ -518,38 +518,7 @@ public class Othello {
 					}
 				}
 			}
-			//String[][] d = new String[30][30];
-			System.out.println("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-			//System.out.print("  1　｜　2　｜　3　｜　4　｜　5　｜　6　｜　7　｜　8　｜\n");//linux
-			System.out.print("  １　｜　２　｜　３　｜　４　｜　５　｜　６　｜　７　｜　８　｜\n");//Windows
-			for(int p=11;p<19;p++){
-				System.out.print(j+" |");
-				for(int q=11;q<19;q++){
-					switch (rock[q][p]){
-						case 0:
-							System.out.print("×");
-							break;
-						case 1 :
-							System.out.print("●");
-							break;
-						case 2 :
-							System.out.print("○");
-							break;
-						case -1 :
-							System.out.print("▲");
-							break;
-						case -2 :
-							System.out.print("△");
-							break;
-						default :
-							System.out.print("??");
-							System.out.println("Error:不明な値を検出");
-					}
-					System.out.print("　｜　");
-				}
-				System.out.println("");
-				System.out.println("_______________________________________________________________");
-			}
+			draw();
 			System.out.println("あなたのスコア："+white);
 			System.out.println("コンピュータのスコア："+black);
 			if (black>white){
@@ -572,7 +541,6 @@ public class Othello {
 	}
 
 	static void draw(){
-		//String[][] d = new String[30][30];
 		System.out.println("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 		//System.out.print("  1　｜　2　｜　3　｜　4　｜　5　｜　6　｜　7　｜　8　｜\n");//linux
 		System.out.print("  １　｜　２　｜　３　｜　４　｜　５　｜　６　｜　７　｜　８　｜\n");//Windows
@@ -601,8 +569,7 @@ public class Othello {
 				}
 				System.out.print("　｜　");
 			}
-			System.out.println("");
-			System.out.println("_______________________________________________________________");
+			System.out.println("\n_______________________________________________________________");
 		}
 	}
 
