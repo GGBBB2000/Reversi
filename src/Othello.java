@@ -148,21 +148,9 @@ public class Othello {
 			}
 		}
 	}
-	static void count(){
-		int judge = 0;
+	static boolean count(){
 		int maxi = 0;
 		int maxj = 0;
-		for (int t = 11;t<19;t++){
-			for (int s = 11;s<19;s++){
-				if(rock[s][t] <= 0){
-					judge = 1;
-				}
-			}
-		}
-		if (judge==0){
-			System.out.println("コンピュータはパスしました");
-		}
-		judge=0;
 		for(int j = 11;j<19;j++){
 			for (int i = 11;i<19;i++){//こっからくっそ無駄な処理してて恥ずかしくないの。。。？
 				//上
@@ -502,6 +490,77 @@ public class Othello {
 				}
 			}
 		}
+		int judge = 0;
+		int hoge = 0;
+		for (int t = 11;t<19;t++){
+			for (int s = 11;s<19;s++){
+				if(rock[s][t] != -1){
+					judge = 1;
+				}
+				if (rock[s][t]<=0){
+					hoge = 1;
+				}
+			}
+		}
+		if (judge==0){
+			System.out.println("コンピュータはパスしました");
+		}
+		if (hoge==0){
+			int black = 0;
+			int white = 0;
+			for (int s = 11;s<19;s++){
+				for (int t = 11;t<19;t++){
+					if (rock[t][s] == 1 ){
+						black++;
+					}
+					if (rock[t][s] == 2 ){
+						white++;
+					}
+				}
+			}
+			//String[][] d = new String[30][30];
+			System.out.println("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+			//System.out.print("  1　｜　2　｜　3　｜　4　｜　5　｜　6　｜　7　｜　8　｜\n");//linux
+			System.out.print("  １　｜　２　｜　３　｜　４　｜　５　｜　６　｜　７　｜　８　｜\n");//Windows
+			for(int p=11;p<19;p++){
+				System.out.print(j-10+" |");
+				for(int q=11;q<19;q++){
+					switch (rock[q][p]){
+						case 0:
+							System.out.print("×");
+							break;
+						case 1 :
+							System.out.print("●");
+							break;
+						case 2 :
+							System.out.print("○");
+							break;
+						case -1 :
+							System.out.print("▲");
+							break;
+						case -2 :
+							System.out.print("△");
+							break;
+						default :
+							System.out.print("??");
+							System.out.println("Error:不明な値を検出");
+					}
+					System.out.print("　｜　");
+				}
+				System.out.println("");
+				System.out.println("_______________________________________________________________");
+			}
+			System.out.println("あなたのスコア："+white);
+			System.out.println("コンピュータのスコア："+black);
+			if (black>white){
+				System.out.println("あなたの負け！！");
+			} else if (black==white){
+				System.out.println("引き分け！！");
+			} else {
+				System.out.println("あなたの勝ち！！");
+			}
+			return false;
+		}
 		for(int s=11;s<19;s++){
 			for(int t=11;t<19;t++){
 				if (rock[t][s]==-1){
@@ -509,6 +568,7 @@ public class Othello {
 				}
 			}
 		}
+		return true;
 	}
 
 	static void draw(){
@@ -681,5 +741,6 @@ public class Othello {
 
 		return (en);
 	}
+
 
 }

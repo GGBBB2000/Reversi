@@ -19,7 +19,11 @@ public class Main {
 					System.out.println("置ける場所を検索");
 					Othello.draw();
 				}
-				Othello.count();
+				if (!Othello.count()){
+					System.out.println("ゲームを終了します");
+					break;
+				}
+
 				//Othello.reverse(maxi,maxj);
 				//Othello.write();
 				System.out.println("判断後");
@@ -28,6 +32,7 @@ public class Main {
 					System.out.println("end");
 					break;
 				}
+
 				System.out.println("人間がおいた場所");
 			}
 		}catch(Exception e){
