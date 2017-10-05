@@ -4,10 +4,8 @@ public class Main {
 		try{
 			/*
 			既存のバグ一覧
-			：その局面で一番多く取れる場所に置くことができていない
-			：AIが置かない
-
-
+			：
+			：
 			*/
 			//Othello othello = new Othello();
 			Othello.diff();
@@ -17,8 +15,10 @@ public class Main {
 				Othello.draw();
 				Othello.search();
 				//Othello.write();
-				System.out.println("置ける場所を検索");
-				Othello.draw();
+				if (false){
+					System.out.println("置ける場所を検索");
+					Othello.draw();
+				}
 				Othello.count();
 				//Othello.reverse(maxi,maxj);
 				//Othello.write();

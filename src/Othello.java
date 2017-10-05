@@ -5,7 +5,7 @@ public class Othello {
 	static String koma[][] = new String [30][30];
 	static int cn[][]=new int [30][30];
 	static int max = 0;
-
+	static int debag = 0;
 	static void diff(){
 		for (int j = 11;j<19;j++){
 			for (int i = 11;i<19;i++){
@@ -156,13 +156,17 @@ public class Othello {
 						}
 						if (rock[i][j-k]==2){
 							h = 1;
-							System.out.println("count(x,y)= "+(i-10)+","+(j-k-10));
-							System.out.println("k = "+k);
+							if (debag == 1){
+								System.out.println("count(x,y)= "+(i-10)+","+(j-k-10));
+								System.out.println("k = "+k);
+							}
 						}
 						if (rock[i][j-k]==1&&h==1){
 							cn[i][j]+=k-1;//ひっくりかえる数を加算
 							h = 0;
-							System.out.println("k = "+k);
+							if (debag == 1){
+								System.out.println("k = "+k);
+							}
 							break;
 						}
 						if (rock[i][j-k]==1&&h==0){
@@ -177,13 +181,17 @@ public class Othello {
 						}
 						if (rock [i+k][j]==2){
 							h = 1;
-							System.out.println("count(x,y)= "+(i+k-10)+","+(j-10));
-							System.out.println("k = "+k);
+							if (debag == 1){
+								System.out.println("count(x,y)= "+(i+k-10)+","+(j-10));
+								System.out.println("k = "+k);
+							}
 						}
 						if (rock[i+k][j]==1&&h==1){
 							cn[i][j]+=k-1;//ひっくりかえる数を加算
 							h = 0;
-							System.out.println("k = "+k);
+							if (debag == 1){
+								System.out.println("k = "+k);
+							}
 							break;
 
 						}
@@ -199,13 +207,17 @@ public class Othello {
 						}
 						if (rock[i][j+k]==2){
 							h = 1;
-							System.out.println("count(x,y)= "+(i-10)+","+(j+k-10));
-							System.out.println("k = "+k);
+							if (debag == 1){
+								System.out.println("count(x,y)= "+(i-10)+","+(j+k-10));
+								System.out.println("k = "+k);
+							}
 						}
 						if (rock[i][j+k]==1&&h==1){
 							cn[i][j]+=k-1;//ひっくりかえる数を加算
 							h = 0;
-							System.out.println("k = "+k);
+							if (debag == 1){
+								System.out.println("k = "+k);
+							}
 							break;
 						}
 						if (rock[i][j+k]==1&&h==0){
@@ -220,13 +232,17 @@ public class Othello {
 						}
 						if (rock [i-k][j]==2){
 							h = 1;
-							System.out.println("count(x,y)= "+(i-k-10)+","+(j-10));
-							System.out.println("k = "+k);
+							if (debag == 1){
+								System.out.println("count(x,y)= "+(i-k-10)+","+(j-10));
+								System.out.println("k = "+k);
+							}
 						}
 						if (rock[i-k][j]==1&&h==1){
 							cn[i][j]+=k-1;//ひっくりかえる数を加算
 							h = 0;
-							System.out.println("k = "+k);
+							if (debag == 1){
+								System.out.println("k = "+k);
+							}
 							break;
 						}
 						if (rock[i-k][j]==1&&h==0){
@@ -243,13 +259,17 @@ public class Othello {
 						}
 						if (rock [i+k][j-k]==2){
 							h = 1;
-							System.out.println("count(x,y)= "+(i+k-10)+","+(j-k-10));
-							System.out.println("k = "+k);
+							if (debag == 1){
+								System.out.println("count(x,y)= "+(i+k-10)+","+(j-k-10));
+								System.out.println("k = "+k);
+							}
 						}
 						if (rock[i+k][j-k]==1&&h==1){
 							cn[i][j]+=k-1;//ひっくりかえる数を加算
 							h = 0;
-							System.out.println("k = "+k);
+							if (debag == 1){
+								System.out.println("k = "+k);
+							}
 							break;
 						}
 						if (rock[i+k][j-k]==1&&h==0){
@@ -264,13 +284,17 @@ public class Othello {
 						}
 						if (rock [i+k][j+k]==2){
 							h = 1;
-							System.out.println("count(x,y)= "+(i+k-10)+","+(j+k-10));
-							System.out.println("k = "+k);
+							if (debag == 1){
+								System.out.println("count(x,y)= "+(i+k-10)+","+(j+k-10));
+								System.out.println("k = "+k);
+							}
 						}
 						if (rock[i+k][j+k]==1&&h==1){
 							cn[i][j]+=k-1;//ひっくりかえる数を加算
 							h = 0;
-							System.out.println("k = "+k);
+							if (debag == 1){
+								System.out.println("k = "+k);
+							}
 							break;
 						}
 						if (rock[i+k][j+k]==1&&h==0){
@@ -285,13 +309,17 @@ public class Othello {
 						}
 						if (rock[i-k][j+k]==2){
 							h = 1;
-							System.out.println("count(x,y)= "+(i-k-10)+","+(j+k-10));
-							System.out.println("k = "+k);
+							if (debag == 1){
+								System.out.println("count(x,y)= "+(i-k-10)+","+(j+k-10));
+								System.out.println("k = "+k);
+							}
 						}
 						if (rock[i-k][j+k]==1&&h==1){
 							cn[i][j]+=k-1;//ひっくりかえる数を加算
 							h = 0;
-							System.out.println("k = "+k);
+							if (debag == 1){
+								System.out.println("k = "+k);
+							}
 							break;
 						}
 						if (rock[i-k][j+k]==1&&h==0){
@@ -306,13 +334,17 @@ public class Othello {
 						}
 						if (rock [i-k][j-k]==2){
 							h = 1;
-							System.out.println("count(x,y)= "+(i-k-10)+","+(j-k-10));
-
+							if (debag == 1){
+								System.out.println("count(x,y)= "+(i-k-10)+","+(j-k-10));
+								System.out.println("k = "+k);
+							}
 						}
 						if (rock[i-k][j-k]==1&&h==1){
 							cn[i][j]+=k-1;//ひっくりかえる数を加算
 							h = 0;
-							System.out.println("k = "+k);
+							if (debag == 1){
+								System.out.println("k = "+k);
+							}
 							break;
 						}
 						if (rock[i-k][j-k]==1&&h==0){
@@ -322,8 +354,9 @@ public class Othello {
 				}
 
 				if (rock[i][j]==-1){//その座標においたとき裏返る個数＝count
-					System.out.println("x,y= "+(i-10)+","+(j-10)+" count= "+(cn[i][j]));
-
+					if (debag == 1){
+						System.out.println("x,y= "+(i-10)+","+(j-10)+" count= "+(cn[i][j]));
+					}
 					if (cn[i][j]>=max){
 						maxi=i;maxj=j;max=cn[i][j];
 					}
